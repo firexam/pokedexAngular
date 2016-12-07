@@ -10,16 +10,21 @@
 
 app.controller('MainCtrl', ['$scope','pokemonFactory',function ($scope,pokemonFactory) {
 $scope.pokemonList=[];
-$scope.url="";
+var url="",excecute=true;
           $scope.loadMoreRecords = function () {
+            if(excecute){
+              excecute=false;
             $scope.loading = true;
-              pokemonFactory.getList($scope.url).success(function(data){
+              pokemonFactory.getList(url).then(function(result){
+                var data=result.data;
               for(var i=0;i<data.results.length;i++){
                 $scope.pokemonList.push(data.results[i]);
               }
-                 $scope.url=data.next;
+              excecute=true;
+                 url=data.next;
                  $scope.loading = false;
              });
+           }
           };
 
 
