@@ -1,0 +1,15 @@
+
+<div class="row" infinite-scroll='loadMoreRecords()'>
+
+  <div ng-repeat="item in pokemonList" class="col-sm-3">
+    <a class="center-block text-center" href="Detail/{{item.name}}">
+      <label>{{item.name}}</label>
+    <div class="col-sm-12">
+<img src="https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/{{item.name}}.png" alt="{{item.name}}"/>
+</div>
+
+</a>
+  </div>
+  <loading></loading>
+
+</div>
